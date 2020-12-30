@@ -6,11 +6,11 @@ const morgan = require('morgan');
 
 const node_env = 'dev'
 
-const portMin = 3000
-const portMax = 4000
-const portRandom = Math.random() * (portMax - portMin) + portMin; 
-const port = Math.round(portRandom)
-
+// const portMin = 3000
+// const portMax = 4000
+// const portRandom = Math.random() * (portMax - portMin) + portMin; 
+// const port = Math.round(portRandom)
+ const port = 3000;
 
 
 app.get('/', (req, res) => {
