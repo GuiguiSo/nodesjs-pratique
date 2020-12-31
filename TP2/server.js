@@ -12,6 +12,11 @@ const { route } = require('./src/api/components/UtilsRoutes');
 console.log(config);
 //Middleware
 
+app.use(bodyParser.urlencoded({
+    extended: true
+
+})) // for parsing application 
+app.use(bodyParser.json()) //for body parser app/json
 app.use(morgan(config.format_logs));
 app.use(cors());
 
