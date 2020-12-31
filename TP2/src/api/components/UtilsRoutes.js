@@ -20,6 +20,12 @@ router.route('/users/:id')
 
     .get([
         UtilsController.readOneById
+])
+    .delete([
+        UtilsController.deleteOne
+])
+    .put([
+        UtilsController.updateUser
 ]);
 
 
