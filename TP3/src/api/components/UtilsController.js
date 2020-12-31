@@ -1,4 +1,5 @@
 let users = require('./User/UserData');
+const User = require('./User/models/UserModel')
 const { use } = require('./UtilsRoutes');
 
 // //PING
@@ -7,7 +8,15 @@ const { use } = require('./UtilsRoutes');
 // };
 
 exports.readAll = (req, res) => {
-    res.status(200).json(users);
+   User.find()
+    .exec()
+    .then(result => {
+        return res.status(201).json(result);
+    })
+    .catch(err => {
+        return res.status(400).json(err);
+    });
+
 
 
 };
@@ -16,20 +25,16 @@ exports.readAll = (req, res) => {
 //Creat one
 
 exports.createOne = (req, res) => {
-    const user = {
-        id: users[users.length - 1].id + 1,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        phone: req.body.phone,
-        creationDate: new Date,
-        role: req.body.role,
-
-    };
-
-    users.push(user);
-    res.status(201).json(user);
+    const user = new User (req.body);
+    user
+        .save()
+        .then(result => {
+            return res.status(201).json(result);
+        })
+        .catch(err => {
+            return res.status(400).json(err);
+        });
+    
 }
 
 //Delete one

@@ -24,9 +24,9 @@ router.route('/users/:id')
     .delete([
         UtilsController.deleteOne
 ])
-    .put([
-        UtilsController.updateUser
-]);
+//     .put([
+//         UtilsController.updateUser
+// ]);
 
 
 module.exports = router;
